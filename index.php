@@ -2,13 +2,12 @@
 require_once "conn.php";
 require_once "commponents/head.php";
 
-
 $message = "";
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    //username
+    //validate
     if (empty($_POST['userName'])) {
         $validated = true;
         $message = "enter a userName";
@@ -30,8 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query = "SELECT * FROM users WHERE username = '$userName'";
         $result = $conn->query($query);
 
-
-
         if ($result->num_rows > 0) {
         $message = "Username already existed";
         } else {
@@ -41,10 +38,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 if ($result) {
                     $message = "New user is created successfully";
-                    header("refresh:5;url=index.php");
+                    header("refresh:3;url=index.php");
                 } else {
                     $message = "an error has occurred";
-                    header("refresh:5;url=index.php");
+                    header("refresh:3;url=index.php");
                 }
         }
     }
@@ -65,8 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query = "SELECT * FROM users";
         $result = $conn->query($query);
         if ($result->num_rows != 0) {
-            echo "<table class='tables'>
-                    <th>Users:</th>";
+            echo "<table class='table'>
+                    <tr><th>Users:</th></tr>";
             foreach ($result as $user) {
                 $id = $user['id'];
 
@@ -82,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </section>
 
 <div>
-    <p> <a href="createCategory.php">create new category</a></p>
+    <a  href="createCategory.php"><button class="button" type="button"> create new category</button></a>
 </div>
 
 <div>

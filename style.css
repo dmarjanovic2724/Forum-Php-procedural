@@ -1,0 +1,21 @@
+
+.errors{
+    color:  red;
+}
+
+
+
+.table, .table td, .table th {
+    border: 1px solid black;  
+    
+}
+
+.button{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.nav-link{
+    margin-top: 10px;
+}

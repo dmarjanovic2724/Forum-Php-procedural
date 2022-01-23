@@ -1,6 +1,3 @@
-<?php
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +9,7 @@
     <title>Document</title>
 </head>
 <body>
+    <?php include "nav.php"; ?>
 
 
     

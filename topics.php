@@ -1,8 +1,8 @@
 <?php
 require_once "conn.php";
-require_once "commponents/head.php";
 session_start();
 $userId = $_SESSION['userId'];
+require_once "commponents/head.php";
 if (empty($_SESSION['userId'])) {
     header("Location: index.php");
 }
@@ -12,9 +12,6 @@ if(!isset($_SESSION['cat'])){
     }else{
         $cat_id=$_SESSION['cat'];
     }
-//$cat_id = $_GET['cat'];
-//$_SESSION['cat']=$cat_id;
-//query categories
 $query = "SELECT * from categories
 WHERE id = $cat_id";
 $result = $conn->query($query);
@@ -24,8 +21,7 @@ $catDescription = $cat['cat_description'];
 $date = date('Y-m-d H:i:s');
 $message="";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+if ($_SERVER["REQUEST_METHOD"] == "POST") {    
 
     if(empty($_POST['topicName'])){
         $validated=true;        
@@ -39,40 +35,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query = "INSERT INTO topics (topic_name, topic_date, cat_id, user_id) VALUES
         ('$topicName', '$date', $cat_id, '$userId')";
         $result = $conn->query($query);
-        if ($result) {
-            
+        if ($result) {            
             $message = "new topic has been created";
-            header("refresh:2;url=topics.php?cat=$cat_id");
-           
+            header("refresh:2;url=topics.php?cat=$cat_id");           
         } else {
             $message = "something went wrong, the topic isn't created";
             header("refresh:2;url=topics.php?cat=$cat_id");
         }
     }
-    
-       
-    
 }
 ?>
-
-<h1><?php echo $catName ?></h1>
-<h4><?php echo $catDescription ?></h4>
-
-<div>
-    <div>
-        <form action="#" method="POST">
-            <fieldset>
-                <legend>Create new topic</legend>
-
-                <input type="text" name="topicName" value="" placeholder="new topic...">
-                <input type="submit" name="submit" value="Create"><span class="errors">
-                    <?php echo $message ?></span>
-
-            </fieldset>
-
-        </form>
-    </div>
+<div class="topic-header">
+    <div class="topic-name"><h1><?php echo $catName ?></h1></div>
+    <div class="topic-description"><h5><?php echo $catDescription ?></h5></div>
 </div>
+
+
+<div class="form-post">
+    <form action="#" method="POST">
+            <input type="text" name="topicName" value="" placeholder="Create new topic...">
+            <input type="submit" name="submit" value="Create"><span class="errors">
+            <p class="errors"><?php echo $message ?></p>   
+    </form>
+</div>
+
 
 
 <?php
@@ -109,11 +95,7 @@ if($result->num_rows !=0)
     }
     echo "</table>";
 }
-
-if(isset($_SESSION['userId'])){
-    echo '<li class="nav-link"> <a class="nav-link" href="categories.php">Categories </a></li>'
-    ;}
-
+include_once "commponents/footer.php";
 ?>
 
 

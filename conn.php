@@ -4,9 +4,10 @@ $serverName= "localhost";
 $userName="root";
 $db="forum";
 $password="";
+$port="3306";
 
 
-$conn= new mysqli($serverName,$userName, $password,$db);
+$conn= new mysqli($serverName,$userName, $password,$db, $port);
 
 if($conn->connect_error)
 {

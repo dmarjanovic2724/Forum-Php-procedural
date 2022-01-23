@@ -1,13 +1,79 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+body{
+    background: linear-gradient(to right, #eee0e0, #535ed6) ;
+}
+footer{
+    background-color: black;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    color: white;
+    text-align: right;
+    
+}
+nav{
+    width: 100%; 
+}
+nav ul{
+    background-color: rgb(17, 16, 16);
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.header-left{
+    display: flex;   
+    padding-left: 50px;
+    flex: 1;
+}
+.header-left li{
+    margin: 0 10px;    
+    list-style: none;
+}
+.header-left li a{
+    text-decoration: none;
+    color: white;
+}
+.header-right{
+    display: flex;
+    justify-content: flex-end;
+    padding-right:50px; 
+    flex: 1;   
+}
+.header-right li{
+    margin: 0 10px;    
+    list-style: none;
+}
+.header-right li a{
+    text-decoration: none;
+    color: white;
+}
+.header-right li a:hover{    
+    color: red;
+}
+.title{
+    color: white;
+    font-size: xx-large;
+    flex: 1;
+    text-align: center;
+}
 
+header h1{
+    margin: 20px;
+    text-align: center;
+}
 .errors{
     color:  red;
 }
 
-
-
-.table, .table td, .table th {
-    border: 1px solid black;  
-    
+/* next task | check and style table ||... */
+.table, .table td { 
+    border: 1px solid black; 
+    margin:  auto;    
 }
 
 .button{
@@ -19,3 +85,83 @@
 .nav-link{
     margin-top: 10px;
 }
+/* categories page */
+
+#username{
+    color: white;  
+    font-weight: bold;  
+    
+}
+/* forms fields */
+
+.form-post{
+    display: flex;
+    justify-content: center;  
+    margin-top: 15px;  
+    margin-bottom: 10px;
+}
+
+input[type=submit]{
+    border-radius: 5px;
+    background-color: green;
+    color: white;
+    padding: 5px;
+    margin: 2px;
+    cursor: pointer;
+}
+input[type=submit]:hover{
+    color:black
+}
+/* topic page */
+
+.topic-header{
+    display: flex;   
+    width: 100%;
+    padding: 15px 15px;   
+}
+.topic-name{
+    text-decoration: underline;
+}
+.topic-description{
+    display: flex;
+    padding-left: 20px;
+    padding-top: 8px;
+    
+}
+/* post page */
+.post{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px 15px;
+}
+
+.post-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.post-date{
+    opacity: .7;
+}
+
+.post-text{
+    margin-top: 5px;
+    margin-left: 10px;
+}
+#post-msg{
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+    text-decoration: underline;
+}
+#close-topic{
+    display: flex;
+    justify-content: end;
+    padding-right: 20px;  
+}
+#close-topic input{
+background-color: red;
+}
+

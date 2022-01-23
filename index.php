@@ -21,7 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $userName = $conn->real_escape_string($_POST['userName']);
         $validated = false;
     }
-
     //check validate
 
     if ($validated == false) {
@@ -50,9 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <header>
-    <div>
-        <h2>Welcome to forum</h2>
-    </div>
+   <h1>Welcome to forum</h1>    
 </header>
 
 <!-- users list -->
@@ -62,7 +59,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query = "SELECT * FROM users";
         $result = $conn->query($query);
         if ($result->num_rows != 0) {
-            echo "<table class='table'>
+            echo 
+            "<div class='center'>
+            <table class='table'>
                     <tr><th>Users:</th></tr>";
             foreach ($result as $user) {
                 $id = $user['id'];
@@ -71,31 +70,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "<td><a href='categories.php?id=$id'>" . $user['username'] . "</a></td>";
                 echo "</tr>";
             }
-            echo "</table>";
+            echo 
+            "</table>
+            </div>";
         }
 
         ?>
     </div>
 </section>
 
-<div>
-    <a  href="createCategory.php"><button class="button" type="button"> create new category</button></a>
-</div>
-
-<div>
-
-
-    <div>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-            <fieldset>
+    <div class="form-post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">          
                 <legend>Create a new user</legend>
-
                 <input type="text" name="userName" placeholder="Create username">
-                <input type="submit" value="Create"><span class="errors">
-                    <?php echo $message ?></span>
-
-            </fieldset>
-
+                <input type="submit" value="Create"> 
+                <p class="errors"><?php echo $message ?></p>       
         </form>
     </div>
-</div>
+
+
+        <!-- next task | style and edit "createCategory" -->
+    <div>
+            <a  href="createCategory.php"><button class="button" type="button"> create new category</button></a>
+    </div>

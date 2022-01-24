@@ -7,6 +7,9 @@ if (!isset($_SESSION['userId'])) {
     $_SESSION['userId'] = $id;
 }
 $id = $_SESSION['userId'];
+if(isset($_SESSION['cat'])){
+    unset($_SESSION['cat']);
+}
 //query
 $query = "SELECT username FROM users
     WHERE id = $id";

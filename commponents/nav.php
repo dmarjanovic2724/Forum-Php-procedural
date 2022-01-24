@@ -6,7 +6,7 @@ $url=$_SERVER['REQUEST_URI'];
 $check=strpos($url,'posts');
 $sesionActive=isset($_SESSION['userId']);
 
-if($url !='/forum/index.php')
+if($url !='/forum/index.php' && $url !='/forum/createCategory.php')
 {
     $userName=$_SESSION['userName'];
     //logOUt

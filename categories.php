@@ -19,19 +19,76 @@ require_once "commponents/head.php";
 $query = "SELECT * FROM categories";
 $result = $conn->query($query);
 
+
+
 if ($result->num_rows != 0) {
-    echo "<table class='table'>
-            <tr><th>categories:</th></tr>";
+    echo "<ul class='list'>";
     foreach ($result as $cat) {
-        $cat_id = $cat['id'];
-        echo "<tr>";
-        echo "<td><a href='topics.php?cat=$cat_id'>" . $cat['cat_name'] . "</a></td>";
-        echo "</tr>";
-    }
-    echo "</table>";
+        $cat_id = $cat['id'];      
+        echo "<li><a href='topics.php?cat=$cat_id'>" . $cat['cat_name'] . "</a></li>";       
+    }  
+    echo "</ul>";
 }
+
+//topic should be able to change the owner to someone else
+
+ if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    $topicId=$_POST['topic'];
+    $user=$_POST['user'];
+
+    $query="UPDATE topics SET user_id='$user' WHERE id = '$topicId'";
+    $result=$conn->query($query);
+    if($result)
+    {
+                $message = "the topic ... has change the owner to ...";
+                header("refresh:2;url=categories.php");
+    }
+ }
+
+
+$query="SELECT id, topic_name FROM topics WHERE user_id = $id";
+$resultTopics=$conn->query($query);
+if($resultTopics->num_rows !=0){
+
+    echo "<form action='#' method='POST'>
+        <div>
+            <select name='topic'>
+            <option>list of my topics</option>";
+    foreach ($resultTopics as $topic) {
+            
+        echo"<option value=".$topic['id'].">".$topic['id']. $topic['topic_name'] ."</option>";
+          
+    }  
+        echo "</select>
+            </div>";       
+}
+
+//query users list
+
+$query = "SELECT * FROM users";
+$result = $conn->query($query);
+if ($result->num_rows != 0 && $resultTopics->num_rows !=0) {
+    echo "
+        <div>
+            <select name='user'>
+            <option>list of users</option>";
+    foreach ($result as $user) {
+            
+        echo"<option value=".$user['id'].">". $user['id'].$user['username'] ."</option>";         
+    }  
+        echo "</select>
+            </div>
+
+            <input type='submit' name='send' value='send'>
+            <p class='errors'>".$message."</p> 
+        </form>";
+}else{
+   echo"<h3>You dont have any topic yet...</h3>";
+}
+
 include_once "commponents/footer.php";
 ?>
+
 
 
 

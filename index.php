@@ -86,10 +86,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="submit" value="Create"> 
                 <p class="errors"><?php echo $message ?></p>       
         </form>
+        
     </div>
 
-
-        <!-- next task | style and edit "createCategory" -->
     <div>
-            <a  href="createCategory.php"><button class="button" type="button"> create new category</button></a>
+        <a  href="createCategory.php"><button  type="button"> create new category</button></a>
     </div>
+
+   

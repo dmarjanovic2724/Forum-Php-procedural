@@ -5,6 +5,7 @@
 }
 body{
     background: linear-gradient(to right, #eee0e0, #535ed6) ;
+    /* background-image: url(commponents/images/bg.jpg); */
 }
 footer{
     background-color: black;
@@ -12,18 +13,18 @@ footer{
     width: 100%;
     bottom: 0;
     color: white;
-    text-align: right;
-    
+    text-align: right;    
 }
 nav{
     width: 100%; 
 }
 nav ul{
     background-color: rgb(17, 16, 16);
-    height: 80px;
+    height: 60px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 40px;
 }
 .header-left{
     display: flex;   
@@ -76,10 +77,14 @@ header h1{
     margin:  auto;    
 }
 
-.button{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-weight: 800;
+.list{
+    text-align: center;
+    padding: 15px;
+   list-style: none;
+   font-size: x-large;
+}
+.list li :hover{
+    color: white;
 }
 
 .nav-link{
@@ -164,4 +169,6 @@ input[type=submit]:hover{
 #close-topic input{
 background-color: red;
 }
+
+/* drop down list */
 

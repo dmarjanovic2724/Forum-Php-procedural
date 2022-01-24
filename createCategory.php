@@ -22,8 +22,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 }
 
 ?>
-<section>
-    <div>   
+    <div class="form-post">    
         <form action="" method="POST">
                 <fieldset>
                 <legend>Create a new category</legend>
@@ -32,11 +31,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                 <input type="text" name="description"  placeholder="Category description">
                 <input type="submit" value="Create">
             </fieldset>
-        </form>
-        <div>
-            <p>
-                <a href="index.php">Go back</a>
-            </p>
-        </div>
+        </form>             
     </div>
-</section>
+    <p>
+        <a href="index.php">&lAarr; Go back</a>
+    </p>  

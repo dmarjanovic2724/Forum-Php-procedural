@@ -105,13 +105,18 @@ header h1{
 }
 .table td a{
     text-decoration: none;
+    font-size: larger;
+}
+
+.table td a:hover{
+    color: white;
 }
 
 .table th{
     border-right: 1px solid black;
     border-bottom: 1px solid black;
 }
-.tdstatus{
+.text-center{
     text-align: center;
 }
 
@@ -130,6 +135,10 @@ header h1{
 
 .nav-link{
     margin-top: 10px;
+}
+
+a, a:visited, a:hover, a:active {
+    color: inherit;
 }
 /* categories page */
 
@@ -213,6 +222,8 @@ input[type=submit]:hover{
 #close-topic input{
 background-color: red;
 }
-
+.lock{
+    color: red;
+}
 
 

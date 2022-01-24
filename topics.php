@@ -90,12 +90,12 @@ if($result->num_rows !=0)
         echo "<tr>";
         echo "<td><a href='posts.php?id=$id'>".$topic['topic_name']."</a></td>";
         echo "<td>".$topic['created_by']."</td>";
-        echo "<td class='tdstatus'>".$topic['topic_date']."</td>";        
-        echo "<td class='tdstatus'>".$numOfPosts['numOfPosts']."</td>";
+        echo "<td class='text-center'>".$topic['topic_date']."</td>";        
+        echo "<td class='text-center'>".$numOfPosts['numOfPosts']."</td>";
         if($status ==1){
-            echo "<td class='tdstatus'><i class='fas fa-lock'></i></td>";
+            echo "<td class='text-center lock'><i class='fas fa-lock'></i></td>";
         }else{
-            echo "<td class='tdstatus'><i class='fas fa-lock-open'></i></td>";
+            echo "<td class='text-center'><i class='fas fa-lock-open'></i></td>";
         } 
            
         echo "</tr>";

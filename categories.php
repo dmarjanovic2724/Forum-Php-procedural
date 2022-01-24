@@ -56,7 +56,7 @@ if($resultTopics->num_rows !=0){
             <option>list of my topics</option>";
     foreach ($resultTopics as $topic) {
             
-        echo"<option value=".$topic['id'].">".$topic['id']. $topic['topic_name'] ."</option>";
+        echo"<option value=".$topic['id'].">". $topic['topic_name'] ."</option>";
           
     }  
         echo "</select>
@@ -73,12 +73,15 @@ if ($result->num_rows != 0 && $resultTopics->num_rows !=0) {
             <select name='user'>
             <option>list of users</option>";
     foreach ($result as $user) {
-            
-        echo"<option value=".$user['id'].">". $user['id'].$user['username'] ."</option>";         
+        
+           if($user['id'] !=$id)
+           {
+            echo"<option value=".$user['id'].">".$user['username'] ."</option>";  
+           } 
+              
     }  
         echo "</select>
             </div>
-
             <input type='submit' name='send' value='send'>
             <p class='errors'>".$message."</p> 
         </form>";

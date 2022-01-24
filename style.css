@@ -72,10 +72,26 @@ header h1{
 }
 
 /* next task | check and style table ||... */
-.table, .table td { 
-    border: 1px solid black; 
-    margin:  auto;    
+
+.table{
+    /* border-collapse: collapse; */
+    width: 80%;
+    border-top: 1px  solid black;
+    border-left: 1px solid black;
+    margin: auto;
 }
+.table td{    
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.table th{
+    border-right: 1px solid black;
+}
+.table th:last-child{
+    border-right: none;
+}
+
 
 .list{
     text-align: center;
@@ -119,19 +135,23 @@ input[type=submit]:hover{
 }
 /* topic page */
 
-.topic-header{
-    display: flex;   
-    width: 100%;
-    padding: 15px 15px;   
+.topic-header{     
+    width: 70%;   
+    border: 1px solid black;  
+    margin:  auto;  
+    
+  
 }
 .topic-name{
     text-decoration: underline;
-}
-.topic-description{
-    display: flex;
-    padding-left: 20px;
-    padding-top: 8px;
+    background-color: gray;
+    font-size: 32px;
+    padding: 10px;
     
+}
+.topic-description{   
+ padding: 10px;  
+ 
 }
 /* post page */
 .post{

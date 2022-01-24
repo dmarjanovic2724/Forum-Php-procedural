@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result->num_rows != 0) {
             echo 
             "<div class='center'>
-            <table class='table'>
+            <table cellspacing='0' class='table' >
                     <tr><th>Users:</th></tr>";
             foreach ($result as $user) {
                 $id = $user['id'];

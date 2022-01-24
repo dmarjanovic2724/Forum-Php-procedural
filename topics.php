@@ -45,10 +45,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-<div class="topic-header">
-    <div class="topic-name"><h1><?php echo $catName ?></h1></div>
-    <div class="topic-description"><h5><?php echo $catDescription ?></h5></div>
-</div>
+<table class="topic-header">
+    <tr ><td class="topic-name"><?php echo $catName ?></td></tr>
+    <tr><td  class="topic-description"><?php echo $catDescription ?></td></tr>
+</table>
 
 
 <div class="form-post">
@@ -70,11 +70,10 @@ if($result->num_rows !=0)
 {
 
 
-    echo "<table class='table'>
+    echo "<table cellspacing='0' class='table'>
             <th>topic name:</th>
             <th>topic date:</th>
-            <th>Created by:</th>
-            <th>cat name</th>
+            <th>Created by:</th>         
             <th>STATUS</th>";
     foreach ($result as $topic) {
         $id=$topic['id'];
@@ -85,7 +84,7 @@ if($result->num_rows !=0)
         echo "<td><a href='posts.php?id=$id'>".$topic['topic_name']."</a></td>";
         echo "<td>".$topic['topic_date']."</td>";
         echo "<td>".$topic['created_by']."</td>";
-        echo "<td>".$topic['cat_name']."</td>";
+        // echo "<td>".$topic['cat_name']."</td>";
         if($status ==1){
             echo "<td>CLOSED</td>";
         }else{

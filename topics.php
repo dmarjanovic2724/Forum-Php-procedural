@@ -71,10 +71,10 @@ if($result->num_rows !=0)
 
 
     echo "<table cellspacing='0' class='table'>
-            <th>topic name:</th>
-            <th>topic date:</th>
-            <th>Created by:</th>         
-            <th>STATUS</th>";
+            <th>Topic name:</th>
+            <th>Created by:</th> 
+            <th>Topic date:</th>                   
+            <th>Status</th>";
     foreach ($result as $topic) {
         $id=$topic['id'];
         $_SESSION['cat_id']=$id;
@@ -82,13 +82,13 @@ if($result->num_rows !=0)
        
         echo "<tr>";
         echo "<td><a href='posts.php?id=$id'>".$topic['topic_name']."</a></td>";
-        echo "<td>".$topic['topic_date']."</td>";
         echo "<td>".$topic['created_by']."</td>";
+        echo "<td class='tdstatus'>".$topic['topic_date']."</td>";        
         // echo "<td>".$topic['cat_name']."</td>";
         if($status ==1){
-            echo "<td>CLOSED</td>";
+            echo "<td class='tdstatus'><i class='fas fa-lock'></i></td>";
         }else{
-            echo "<td>ACTIVE</td>";
+            echo "<td class='tdstatus'><i class='fas fa-lock-open'></i></td>";
         }    
         echo "</tr>";
     }

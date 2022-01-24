@@ -13,7 +13,7 @@ footer{
     width: 100%;
     bottom: 0;
     color: white;
-    text-align: right;    
+    text-align: right;     
 }
 nav{
     width: 100%; 
@@ -70,8 +70,25 @@ header h1{
 .errors{
     color:  red;
 }
-
-/* next task | check and style table ||... */
+.tableUser{
+    width: auto;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    
+}
+.tableUser td{
+    text-align: center;
+    height: 30px;   
+    font-size: x-large; 
+}
+.tableUser td a{
+    text-decoration: none;
+}
+.tableUser td a:hover{    
+    color: red;
+   
+}
 
 .table{
     /* border-collapse: collapse; */
@@ -79,19 +96,24 @@ header h1{
     border-top: 1px  solid black;
     border-left: 1px solid black;
     margin: auto;
+    margin-bottom: 30px;
 }
 .table td{    
     border-right: 1px solid black;
     border-bottom: 1px solid black;
+    height: 30px;   
+}
+.table td a{
+    text-decoration: none;
 }
 
 .table th{
     border-right: 1px solid black;
+    border-bottom: 1px solid black;
 }
-.table th:last-child{
-    border-right: none;
+.tdstatus{
+    text-align: center;
 }
-
 
 .list{
     text-align: center;
@@ -101,6 +123,9 @@ header h1{
 }
 .list li :hover{
     color: white;
+}
+.list li a{
+    text-decoration: none;
 }
 
 .nav-link{
@@ -139,8 +164,7 @@ input[type=submit]:hover{
     width: 70%;   
     border: 1px solid black;  
     margin:  auto;  
-    
-  
+      
 }
 .topic-name{
     text-decoration: underline;
@@ -190,5 +214,5 @@ input[type=submit]:hover{
 background-color: red;
 }
 
-/* drop down list */
+
 

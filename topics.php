@@ -71,25 +71,33 @@ if($result->num_rows !=0)
 
 
     echo "<table cellspacing='0' class='table'>
-            <th>Topic name:</th>
-            <th>Created by:</th> 
-            <th>Topic date:</th>                   
+            <th>Topic name</th>
+            <th>Created by</th> 
+            <th>Topic date</th>   
+            <th>Posts</th>                 
             <th>Status</th>";
     foreach ($result as $topic) {
         $id=$topic['id'];
         $_SESSION['cat_id']=$id;
         $status=$topic['topic_done'];
+        $query="SELECT COUNT(`post_text`) as numOfPosts
+        FROM posts
+        WHERE topic_id = '$id'";
+        $result=$conn->query($query);
+        $numOfPosts = $result->fetch_assoc();
+       
        
         echo "<tr>";
         echo "<td><a href='posts.php?id=$id'>".$topic['topic_name']."</a></td>";
         echo "<td>".$topic['created_by']."</td>";
         echo "<td class='tdstatus'>".$topic['topic_date']."</td>";        
-        // echo "<td>".$topic['cat_name']."</td>";
+        echo "<td class='tdstatus'>".$numOfPosts['numOfPosts']."</td>";
         if($status ==1){
             echo "<td class='tdstatus'><i class='fas fa-lock'></i></td>";
         }else{
             echo "<td class='tdstatus'><i class='fas fa-lock-open'></i></td>";
-        }    
+        } 
+           
         echo "</tr>";
     }
     echo "</table>";

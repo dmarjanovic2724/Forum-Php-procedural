@@ -27,7 +27,7 @@ if (isset($_GET['logOff'])) {
                 echo "</div><h1 class='title'>FORUM</h1>";
                                
                     if($sesionActive){
-                        echo "<div class='header-right'><p id='username'>".$userName."</p><li><a href='?logOff'> LogOut</a></li></div>";
+                        echo "<div class='header-right'><p id='username'><i class='fas fa-user-tie'></i> ".$userName."</p><li><a href='?logOff'><i class='fas fa-sign-out-alt'></i> LogOut</a></li></div>";
                     }
             echo "</ul>            
         </nav>";

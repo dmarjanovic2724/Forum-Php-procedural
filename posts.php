@@ -87,9 +87,9 @@ if ($result->num_rows != 0) {
     foreach ($result as $post) {
 
         echo "<div class='post'><div class='post-top'>
-            <p class='post-userName'>" . $post['username'] . "</p><p class='post-date'>" . $post['post_date'] . "</p>
+            <p class='post-userName'><i class='fas fa-user-tie'></i>" . $post['username'] . "</p><p class='post-date'><i class='fas fa-clock'></i> &nbsp;" . $post['post_date'] . "</p>
             </div>";
-        echo "<p class='post-text'>" . $post['post_text'] . "</p></div><hr>";
+        echo "<p class='post-text'><i class='fas fa-comments'></i> &nbsp;" . $post['post_text'] . "</p></div><hr>";
     }
 }
 

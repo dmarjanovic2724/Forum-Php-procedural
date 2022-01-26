@@ -25,10 +25,20 @@ if ($topicStatus == 0) {
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['post'])) {
 
 
-        $validate = false;
-        $postName = $conn->real_escape_string($_POST['postName']);
 
-        if ($validate == false) {
+
+        //validate
+        if (empty($_POST['postName'])) {
+            $validated = true;
+            $message = "write a post";
+        } else {
+            $validated = false;
+            $postName = $conn->real_escape_string($_POST['postName']);
+            // $postName=str_ireplace('  ',' ',$postName); cut whitespaces??
+        }
+
+
+        if ($validated == false) {
             $query = "INSERT INTO posts (post_text, post_date, topic_id, user_id) VALUES
         ('$postName', '$date', $topic_id, '$userId')";
             $result = $conn->query($query);
@@ -59,20 +69,20 @@ if ($topicStatus == 0) {
 
 
     <div class="form-post">
-        <form action="#" method="POST">            
+        <form action="#" method="POST">
             <input type="text" name="postName" value="" placeholder="Create new post...">
             <input type="submit" name="post" value="Create">
             <p class="errors"><?php echo $message ?></p>
         </form>
     </div>
     <div id="close-topic">
-            <form action="#" method="POST">
-                <input type="submit" name="close" value="close topic">
-            </form>
+        <form action="#" method="POST">
+            <input type="submit" name="close" value="close topic">
+        </form>
     </div>
 
 
-   
+
 <?php
 }
 

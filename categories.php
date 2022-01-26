@@ -2,6 +2,10 @@
 
 require_once "conn.php";
 session_start();
+
+if(empty($_GET['id'])){
+    header("Location: index.php");
+}
 if (!isset($_SESSION['userId'])) {
     $id = $_GET['id'];
     $_SESSION['userId'] = $id;
@@ -53,7 +57,8 @@ $query="SELECT id, topic_name FROM topics WHERE user_id = $id";
 $resultTopics=$conn->query($query);
 if($resultTopics->num_rows !=0){
 
-    echo "<form action='#' method='POST'>
+    echo "
+    <form  class='catForm' action='#' method='POST'>
         <div>
             <select name='topic'>
             <option>list of my topics</option>";
@@ -63,7 +68,7 @@ if($resultTopics->num_rows !=0){
           
     }  
         echo "</select>
-            </div>";       
+        </div>";       
 }
 
 //query users list
@@ -87,7 +92,8 @@ if ($result->num_rows != 0 && $resultTopics->num_rows !=0) {
             </div>
             <input type='submit' name='send' value='send'>
             <p class='errors'>".$message."</p> 
-        </form>";
+        </form>
+        ";
 }else{
    echo"<h3>You dont have any topic yet...</h3>";
 }

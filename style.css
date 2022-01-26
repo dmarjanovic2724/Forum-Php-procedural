@@ -20,9 +20,7 @@ footer{
     font-size: larger; 
 }
 
-nav{
-    width: 100%; 
-}
+
 nav ul{    
     background-color: rgb(17, 16, 16);
     height: 60px;
@@ -127,9 +125,9 @@ header h1{
 
 .list{
     text-align: center;
-    padding: 15px;
-   list-style: none;
-   font-size: x-large;
+    padding: 35px;
+    list-style: none;
+    font-size: xx-large;
 }
 .list li :hover{
     color: white;
@@ -145,17 +143,17 @@ header h1{
 a, a:visited, a:hover, a:active {
     color: inherit;
 }
-/* categories page */
+
 
 #username{
     color: white;  
     font-weight: bold;  
     
 }
-/* forms fields */
+
 
 .form-post{
-    display: flex;
+    display: flex;   
     justify-content: center;  
     margin-top: 15px;  
     margin-bottom: 10px;
@@ -172,7 +170,7 @@ input[type=submit]{
 input[type=submit]:hover{
     color:black
 }
-/* topic page */
+
 
 .topic-header{     
     width: 70%;   
@@ -196,7 +194,7 @@ input[type=submit]:hover{
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 15px 15px;
+    padding: 25px 15px;
 }
 
 .post-top{
@@ -231,4 +229,25 @@ background-color: red;
     color: red;
 }
 
+.catForm{     
+    display: flex;
+    align-items: center;  
+    justify-content: center;
+   
+}
+.catForm select , input{
+    font-size:large; 
+    margin: 10px;
+}
+
+#createCat{
+   display: flex;
+   justify-content: center;
+   padding-top: 20px;    
+}
+
+#createCat button{
+   padding: 5px;
+  font-size: large;
+}
 

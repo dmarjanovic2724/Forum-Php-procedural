@@ -16,7 +16,9 @@ if (isset($_GET['logOff'])) {
         header('Location:index.php');
     }
 }   
-    echo  "<nav>            
+    echo  "
+   
+    <nav class='row'>            
             <ul>
             <div class='header-left'>                    
                 <li><a href='categories.php'>Categories</a></li>";
@@ -29,7 +31,8 @@ if (isset($_GET['logOff'])) {
                     if($sesionActive){
                         echo "<div class='header-right'><p id='username'><i class='fas fa-user-tie'></i> ".$userName."</p><li><a href='?logOff'><i class='fas fa-sign-out-alt'></i> LogOut</a></li></div>";
                     }
-            echo "</ul>            
+            echo "</ul>    
+                   
         </nav>";
 
 }

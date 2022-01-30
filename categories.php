@@ -3,7 +3,7 @@
 require_once "conn.php";
 session_start();
 
-if(empty($_GET['id'])){
+if(empty($_GET['id']) && !isset($_SESSION['userId'])){
     header("Location: index.php");
 }
 if (!isset($_SESSION['userId'])) {
@@ -14,6 +14,7 @@ $id = $_SESSION['userId'];
 if(isset($_SESSION['cat'])){
     unset($_SESSION['cat']);
 }
+
 //query
 $query = "SELECT username FROM users
     WHERE id = $id";
@@ -37,7 +38,7 @@ if ($result->num_rows != 0) {
     echo "</ul>";
 }
 
-//topic should be able to change the owner to someone else
+//change the owner to someone else
 
  if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $topicId=$_POST['topic'];
@@ -59,9 +60,11 @@ if($resultTopics->num_rows !=0){
 
     echo "
     <form  class='catForm' action='#' method='POST'>
+    <fieldset class='catfield'>
+    <legend>change topic to someone else</legend>
         <div>
             <select name='topic'>
-            <option>list of my topics</option>";
+            <option disabled>list of my topics</option>";
     foreach ($resultTopics as $topic) {
             
         echo"<option value=".$topic['id'].">". $topic['topic_name'] ."</option>";
@@ -79,7 +82,7 @@ if ($result->num_rows != 0 && $resultTopics->num_rows !=0) {
     echo "
         <div>
             <select name='user'>
-            <option>list of users</option>";
+            <option disabled>list of users</option>";
     foreach ($result as $user) {
         
            if($user['id'] !=$id)
@@ -90,8 +93,9 @@ if ($result->num_rows != 0 && $resultTopics->num_rows !=0) {
     }  
         echo "</select>
             </div>
-            <input type='submit' name='send' value='send'>
+            <input type='submit' name='send' value='Change'>
             <p class='errors'>".$message."</p> 
+            </fieldset>
         </form>
         ";
 }else{
@@ -100,7 +104,5 @@ if ($result->num_rows != 0 && $resultTopics->num_rows !=0) {
 
 include_once "commponents/footer.php";
 ?>
-
-
 
 

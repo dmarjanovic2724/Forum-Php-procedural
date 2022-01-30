@@ -1,24 +1,25 @@
 <?php
 require_once "conn.php";
 session_start();
-$userId = $_SESSION['userId'];
-$topic_id = $_GET['id'];
-$cat = $_SESSION['cat'];
-require_once "commponents/head.php";
-if (empty($_SESSION['userId'])) {
+
+if(empty($_SESSION['userId'])){
     header("Location: index.php");
 }
+if(empty($_GET['id'])){
+    header("Location: index.php");
+}
+$userId = $_SESSION['userId'];
+$topic_id = $_GET['id'];
+$query = "SELECT topic_name, topic_done, cat_id from topics WHERE id = $topic_id";
+$result = $conn->query($query);
+$topic = $result->fetch_assoc();
+$cat=$topic['cat_id'];
+$topicName = $topic['topic_name'];
+$topicStatus = $topic['topic_done']; //topic status 0=active ||  1=close
+require "commponents/head.php";
 
 $date = date('Y-m-d H:i:s');
 $message = "";
-
-//query
-
-$query = "SELECT topic_name, topic_done from topics WHERE id = $topic_id";
-$result = $conn->query($query);
-$topic = $result->fetch_assoc();
-$topicName = $topic['topic_name'];
-$topicStatus = $topic['topic_done']; //topic status 0=active ||  1=close
 
 if ($topicStatus == 0) {
     //form 1

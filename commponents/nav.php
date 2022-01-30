@@ -6,6 +6,8 @@ $url=$_SERVER['REQUEST_URI'];
 $check=strpos($url,'posts');
 $sesionActive=isset($_SESSION['userId']);
 
+
+
 if($url !='/forum/index.php' && $url !='/forum/createCategory.php')
 {
     $userName=$_SESSION['userName'];
@@ -14,6 +16,8 @@ if (isset($_GET['logOff'])) {
     if ($sesionActive) {
         session_destroy();
         header('Location:index.php');
+        exit();
+        
     }
 }   
     echo  "
@@ -24,7 +28,7 @@ if (isset($_GET['logOff'])) {
                 <li><a href='categories.php'>Categories</a></li>";
                 if($check)
                 {
-                    echo "<li><a href='topics.php?cat=<?php echo $cat ?>'>Topics</a></li>"; 
+                    echo "<li><a href='topics.php?cat=$cat'>Topics</a></li>"; 
                 }
                 echo "</div><h1 class='title'>FORUM</h1>";
                                
@@ -36,5 +40,3 @@ if (isset($_GET['logOff'])) {
         </nav>";
 
 }
-
- 

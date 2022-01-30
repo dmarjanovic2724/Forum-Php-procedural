@@ -238,16 +238,27 @@ background-color: red;
 .catForm select , input{
     font-size:large; 
     margin: 10px;
+    width:180px;
+}
+.catForm input[type='submit']{
+    margin: auto;
+}
+.catfield{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
 }
 
 #createCat{
    display: flex;
    justify-content: center;
    padding-top: 20px;    
-}
+}eeeeeeeeee
 
 #createCat button{
    padding: 5px;
   font-size: large;
 }
+
+
 

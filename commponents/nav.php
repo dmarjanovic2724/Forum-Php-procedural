@@ -3,12 +3,14 @@
 require_once "conn.php";
 require_once "commponents/head.php";
 $url=$_SERVER['REQUEST_URI'];
-$check=strpos($url,'posts');
+$check=strpos($url,'posts.php?id');
+$checkIndexPage=strpos($url,'index.php');
+$checkCreateCategoryPage=strpos($url,'createCategory.php');
 $sesionActive=isset($_SESSION['userId']);
 
 
 
-if($url !='/forum/index.php' && $url !='/forum/createCategory.php')
+if(!$checkIndexPage && !$checkCreateCategoryPage)
 {
     $userName=$_SESSION['userName'];
     //logOUt

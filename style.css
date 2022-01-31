@@ -97,7 +97,7 @@ header h1{
 
 .table, th, td {
     border: 1px solid black;
-    border-collapse: collapse;
+    border-collapse: collapse;   
   }
 
 .table{
@@ -105,12 +105,16 @@ header h1{
     margin: auto;
     margin-bottom: 30px;
 }
+
 .table td{       
-    height: 30px;   
+    height: 30px;      
+    padding: 3px;
+    
 }
 .table td a{
     text-decoration: none;
     font-size: larger;
+
 }
 .table td a:hover{
     color: white;
@@ -123,19 +127,6 @@ header h1{
     text-align: center;
 }
 
-.list{
-    text-align: center;
-    padding: 35px;
-    list-style: none;
-    font-size: xx-large;
-}
-.list li :hover{
-    color: white;
-}
-.list li a{
-    text-decoration: none;
-}
-
 .nav-link{
     margin-top: 10px;
 }
@@ -144,14 +135,23 @@ a, a:visited, a:hover, a:active {
     color: inherit;
 }
 
+.list{ 
+    
+    list-style: none;
+    font-size: 35px;
+}
+.list li :hover{
+    color: white;
+}
+.list li a{
+    text-decoration: none;
+}
 
 #username{
     color: white;  
     font-weight: bold;  
     
 }
-
-
 .form-post{
     display: flex;   
     justify-content: center;  
@@ -229,25 +229,53 @@ background-color: red;
     color: red;
 }
 
-.catForm{     
+
+.container{
     display: flex;
-    align-items: center;  
-    justify-content: center;
-   
+    padding: 15px; 
+    justify-content:space-evenly;
+    flex-wrap: wrap;
 }
-.catForm select , input{
-    font-size:large; 
+.item{
+    display: flex; 
+    font-size: 20px;  
+    margin: 20px;    
+}
+.item select, input{
+    font-size: 20px;    
     margin: 10px;
 }
 
-#createCat{
-   display: flex;
-   justify-content: center;
-   padding-top: 20px;    
+
+.catfield{
+    display: flex;
+    flex-direction: column;
+    
 }
 
-#createCat button{
-   padding: 5px;
-  font-size: large;
+.search .changeOwner{
+flex: 1;
+display: flex;
+justify-content: flex-end;
 }
+
+.searchTable{  
+    order: 1;   
+    flex-basis: 50%;       
+    display: inline-table   
+}
+
+.categories{
+    display: flex;
+    justify-content: start;
+}
+
+.results{
+    order: 1;   
+    flex-basis: 50%;  
+    text-align: center;
+    font-size: 24px;
+}
+
+
 

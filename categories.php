@@ -32,7 +32,7 @@ if ($result->num_rows != 0) {
     echo "<div class='container'>
     <div class='item categories'>    
     <ul class='list'>
-    <h3>Chose categories:</h3><hr>";
+    <h3>Choose categories:</h3><hr>";
     foreach ($result as $cat) {
         $cat_id = $cat['id'];      
         echo "<li><a href='topics.php?cat=$cat_id'>" . $cat['cat_name'] . "</a></li>";       

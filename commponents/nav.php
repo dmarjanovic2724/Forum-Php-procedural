@@ -3,10 +3,14 @@
 require_once "conn.php";
 require_once "commponents/head.php";
 $url=$_SERVER['REQUEST_URI'];
-$check=strpos($url,'posts');
+$check=strpos($url,'posts.php?id');
+$checkIndexPage=strpos($url,'index.php');
+$checkCreateCategoryPage=strpos($url,'createCategory.php');
 $sesionActive=isset($_SESSION['userId']);
 
-if($url !='/forum/index.php' && $url !='/forum/createCategory.php')
+
+
+if(!$checkIndexPage && !$checkCreateCategoryPage)
 {
     $userName=$_SESSION['userName'];
     //logOUt
@@ -24,7 +28,7 @@ if (isset($_GET['logOff'])) {
                 <li><a href='categories.php'>Categories</a></li>";
                 if($check)
                 {
-                    echo "<li><a href='topics.php?cat=<?php echo $cat ?>'>Topics</a></li>"; 
+                    echo "<li><a href='topics.php?cat=$cat'>Topics</a></li>"; 
                 }
                 echo "</div><h1 class='title'>FORUM</h1>";
                                
@@ -36,5 +40,3 @@ if (isset($_GET['logOff'])) {
         </nav>";
 
 }
-
- 

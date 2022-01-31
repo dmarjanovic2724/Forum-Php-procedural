@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="responsive.css">
     <script src="https://kit.fontawesome.com/a78c659ce6.js" crossorigin="anonymous"></script>    
-    <title>Document</title>
+    <title>Forum</title>
 </head>
 <body>
     <?php include "nav.php"; ?>

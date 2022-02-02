@@ -1,16 +1,16 @@
 <?php
-
-require_once "conn.php";
 require_once "commponents/head.php";
 $url=$_SERVER['REQUEST_URI'];
 $check=strpos($url,'posts.php?id');
 $checkIndexPage=strpos($url,'index.php');
 $checkCreateCategoryPage=strpos($url,'createCategory.php');
+$checkLogInPage=strpos($url,'login.php');
+$checkRegistrationPage=strpos($url,'registration.php');
 $sesionActive=isset($_SESSION['userId']);
 
 
 
-if(!$checkIndexPage && !$checkCreateCategoryPage)
+if(!$checkIndexPage && !$checkCreateCategoryPage && !$checkLogInPage && !$checkRegistrationPage)
 {
     $userName=$_SESSION['userName'];
     //logOUt
@@ -39,4 +39,19 @@ if (isset($_GET['logOff'])) {
                    
         </nav>";
 
-}
+}else{
+    echo"
+        <nav class='row'>            
+        <ul>
+        <div class='header-left'>                     
+            <li><a href='registration.php'>Registration</a></li>    
+            <li><a href='login.php'>Login</a></li>
+            </div><h1 class='title'>FORUM</h1>
+            <div class='header-right'><li><a href='createCategory.php'>Create new categori</a></li></div>
+            </ul>                       
+        </nav>";
+}    
+
+       
+    
+?>

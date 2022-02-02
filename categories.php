@@ -3,30 +3,14 @@
 require_once "conn.php";
 session_start();
 
-if(empty($_GET['id']) && !isset($_SESSION['userId'])){
-    header("Location: index.php");
+if(empty($_SESSION['userId'])){
+    header("Location: login.php");
 }
-if (!isset($_SESSION['userId'])) {
-    $id = $_GET['id'];
-    $_SESSION['userId'] = $id;
-}
-$id = $_SESSION['userId'];
-if(isset($_SESSION['cat'])){
-    unset($_SESSION['cat']);
-}
-//query
-$query = "SELECT username FROM users
-    WHERE id = $id";
-$result = $conn->query($query);
-$user = $result->fetch_assoc();
-$user = $user['username'];
-$_SESSION['userName'] = $user;
-require_once "commponents/head.php";
+$userId=$_SESSION['userId'];
 
+require_once "commponents/head.php";
 $query = "SELECT * FROM categories";
 $result = $conn->query($query);
-
-
 
 if ($result->num_rows != 0) {
     echo "<div class='container'>
@@ -34,7 +18,7 @@ if ($result->num_rows != 0) {
     <ul class='list'>
     <h3>Choose categories:</h3><hr>";
     foreach ($result as $cat) {
-        $cat_id = $cat['id'];      
+        $cat_id = $cat['id'];            
         echo "<li><a href='topics.php?cat=$cat_id'>" . $cat['cat_name'] . "</a></li>";       
     }  
     echo "</ul></div>";
@@ -56,11 +40,11 @@ if ($result->num_rows != 0) {
  }
 
 
- $query="SELECT id, topic_name FROM topics WHERE user_id = $id";
+ $query="SELECT id, topic_name FROM topics WHERE user_id = $userId";
  $resultTopics=$conn->query($query);
  if($resultTopics->num_rows !=0){
  
-     echo "<div class='item changeOwner '>
+     echo "<div class='item changeOwner'>
      <form  action='#' method='POST'>
      <fieldset class='catfield'>
      <legend>change topic to someone else</legend>
@@ -93,7 +77,7 @@ if ($result->num_rows != 0 && $resultTopics->num_rows !=0) {
               
     }  
         echo "</select>            
-            <input type='submit' name='send' value='send'>
+            <input type='submit' name='send' value='Send'>
             <p class='errors'>".$message."</p>
             </fieldset> 
         </form>
@@ -105,6 +89,10 @@ if ($result->num_rows != 0 && $resultTopics->num_rows !=0) {
 // search
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['search'])) {
+
+
+
+
     $search=$conn->real_escape_string($_GET['search']);
     $filter=$_GET['filter'];
     $queryPosts="SELECT posts.id, posts.topic_id as 'topic_id', posts.post_text, posts.post_date as 'date', users.username as 'owner' FROM users INNER JOIN posts ON posts.user_id = users.id WHERE post_text LIKE '%$search%'";
@@ -112,6 +100,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['search'])) {
 
     $queryTopics="SELECT topics.id as 'id', topics.topic_name as 'name', topics.topic_date as 'date', users.username as 'owner' FROM users INNER JOIN topics ON topics.user_id = users.id WHERE topic_name LIKE '%$search%'";
     $resultTopics=$conn->query($queryTopics);
+
+   
 
 
         if(isset($_GET['search']) && ($resultPosts->num_rows !=0 || $resultTopics->num_rows !=0)){
@@ -139,7 +129,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['search'])) {
         echo "</table>";
                 
             }
-        }else{
+        }
+        if(isset($_GET['search']) && ($resultPosts->num_rows ==0 || $resultTopics->num_rows ==0)){
             echo "<p class='results'>
               no found results
                 </p>";

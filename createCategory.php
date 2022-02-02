@@ -22,17 +22,16 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 }
 
 ?>
-    <div class="form-post">    
+    <div class="position-center">  
         <form action="" method="POST">
-                <fieldset>
-                <legend>Create a new category</legend>
-                
-                <input type="text" name="catName"  placeholder="Category name">
-                <input type="text" name="description"  placeholder="Category description">
+                <fieldset class="catfield">
+                <legend class="text-center"><h1>Create new category</h1></legend> 
+                <label>Category name</label>               
+                <input type="text" name="catName">
+                <label>Category description</label>
+                <input type="text" name="description">
                 <input type="submit" value="Create">
             </fieldset>
         </form>             
     </div>
-    <p>
-        <a href="index.php">&lAarr; Go back</a>
-    </p>  
+   

@@ -45,6 +45,9 @@ $table .="CREATE TABLE IF NOT EXISTS posts(
     FOREIGN KEY(user_id) REFERENCES users(id))
     ENGINE = InnoDB;";
 
+$table .=" ALTER TABLE users
+ADD password VARCHAR(50) NOT NULL";
+
 
 $result=$conn->multi_query($table);
 if($result){

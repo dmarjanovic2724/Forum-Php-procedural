@@ -77,7 +77,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
 
 <div class="position-center">
-    <form action="#" method="POST">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
         <fieldset class="catfield">
             <legend class="text-center"><h1 >Registration</h1></legend>
             <label >User Name</label>

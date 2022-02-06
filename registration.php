@@ -53,6 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     if($validated==false){
+        $password=md5($password);
         $queryCheck="SELECT * FROM users where username = '$userName'";
         $result=$conn->query($queryCheck);
         if($result->num_rows != 0){

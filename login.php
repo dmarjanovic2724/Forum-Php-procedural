@@ -28,7 +28,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if($result->num_rows !=0){
             $row=$result->fetch_assoc();
             $dbPass=$row['password'];
-            if($dbPass == $password){
+            if($dbPass == md5($password)){
                 $_SESSION['userId'] = $row['id'];
                 $_SESSION['userName']= $row['username'];
 
